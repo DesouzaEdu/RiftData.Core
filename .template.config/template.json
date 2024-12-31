@@ -1,0 +1,293 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Nocco Giovanni Emanuele",
+  "classifications": [
+    "Web/ASP.NET"
+  ],
+  "name": "Genocs: .NET8 Clean Architecture Template",
+  "identity": "Genocs.CleanArchitecture.Template",
+  "groupIdentity": "Genocs.CleanArchitecture.Template",
+  "shortName": "cleanarchitecture",
+  "tags": {
+    "type": "solution",
+    "language": "C#"
+  },
+  "sourceName": "Genocs.CleanArchitecture.Template", // Will replace the string 'Genocs.CleanArchitecture.Template' with the value provided via -n.
+  "preferNameDirectory": true,
+  "symbols": {
+    "use-cases": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "full",
+      "choices": [
+        {
+          "choice": "full",
+          "description": "Full Wallet Account Balance Management (Read/Write)"
+        },
+        {
+          "choice": "basic",
+          "description": "Allow Customer to Register and to Get Customer Details (Read/Write)"
+        },
+        {
+          "choice": "readonly",
+          "description": "Read Customer and Account Details (Read Only)"
+        }
+      ],
+      "replaces": "use-cases",
+      "onlyIf": [
+        {
+          "after": "\"use-cases\": \""
+        }
+      ]
+    },
+    "service-bus": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "masstransit",
+      "choices": [
+        {
+          "choice": "azureservicebus",
+          "description": "Azure Service Bus (AzureServiceBus)"
+        },
+        {
+          "choice": "masstransit",
+          "description": "Mass Transit Service Bus (MassTransit)"
+        },
+        {
+          "choice": "nservicebus",
+          "description": "Particular Software Service Bus (NServiceBus)"
+        },
+        {
+          "choice": "rebus",
+          "description": "Rebus Service Bus (Rebus)"
+        }
+      ]
+    },
+    "database": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "mongodb",
+      "choices": [
+        {
+          "choice": "mongodb",
+          "description": "MongoDB Database (MongoDb)"
+        },
+        {
+          "choice": "sqlserver",
+          "description": "Microsoft Sql Server Database (SqlServer)"
+        },
+        {
+          "choice": "inmemory",
+          "description": "In Memory database for Debug (InMemory)"
+        }
+      ]
+    },
+    "Basic": {
+      "type": "computed",
+      "value": "(use-cases == \"basic\")"
+    },
+    "ReadOnly": {
+      "type": "computed",
+      "value": "(use-cases == \"readonly\")"
+    },
+    "Full": {
+      "type": "computed",
+      "value": "(use-cases == \"full\")"
+    },
+    "AzureServiceBus": {
+      "type": "computed",
+      "value": "(service-bus == \"azureservicebus\")"
+    },
+    "MassTransit": {
+      "type": "computed",
+      "value": "(service-bus == \"masstransit\")"
+    },
+    "NServiceBus": {
+      "type": "computed",
+      "value": "(service-bus == \"nservicebus\")"
+    },    
+    "Rebus": {
+      "type": "computed",
+      "value": "(service-bus == \"rebus\")"
+    },      
+    "InMemory": {
+      "type": "computed",
+      "value": "(database == \"inmemory\")"
+    },
+    "SqlServer": {
+      "type": "computed",
+      "value": "(database == \"sqlserver\")"
+    },
+    "MongoDb": {
+      "type": "computed",
+      "value": "(database == \"mongodb\")"
+    }, 
+    "CloseAccount": {
+      "type": "computed",
+      "value": "(Full)"
+    },
+    "Deposit": {
+      "type": "computed",
+      "value": "(Full)"
+    },
+    "GetAccountDetails": {
+      "type": "computed",
+      "value": "(Full || ReadOnly)"
+    },
+    "GetCustomerDetails": {
+      "type": "computed",
+      "value": "(Full || ReadOnly || Basic)"
+    },
+    "Register": {
+      "type": "computed",
+      "value": "(Full || Basic)"
+    },
+    "Withdraw": {
+      "type": "computed",
+      "value": "(Full)"
+    },
+    "Transfer": {
+      "type": "computed",
+      "value": "(Full)"
+    },
+    "Refund": {
+      "type": "computed",
+      "value": "(Full)"
+    }
+  },
+  "sources": [
+    {
+      "source": "./",
+      "modifiers": [
+        {
+          "condition": "(ReadOnly)",
+          "exclude": [
+            "src/WebApi/UseCases/V1/CloseAccount/**/*.cs",
+            "src/WebApi/UseCases/V1/Deposit/**/*.cs",
+            "src/WebApi/UseCases/V1/Register/**/*.cs",
+            "src/WebApi/UseCases/V1/Transfer/**/*.cs",
+            "src/WebApi/UseCases/V1/Withdraw/**/*.cs",
+            "src/Application/Boundaries/CloseAccount/**/*.cs",
+            "src/Application/Boundaries/Deposit/**/*.cs",
+            "src/Application/Boundaries/Register/**/*.cs",
+            "src/Application/Boundaries/Transfer/**/*.cs",
+            "src/Application/Boundaries/Withdraw/**/*.cs",
+            "src/Application/UseCases/CloseAccount.cs",
+            "src/Application/UseCases/Deposit.cs",
+            "src/Application/UseCases/Register.cs",
+            "src/Application/UseCases/Transfer.cs",
+            "src/Application/UseCases/Withdraw.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/CloseAccountPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/DepositPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/RegisterPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/TransferPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/WithdrawPresenter.cs",
+            "src/UnitTests/UseCaseTests/CloseAccount/**/*.cs",
+            "src/UnitTests/UseCaseTests/Deposit/**/*.cs",
+            "src/UnitTests/UseCaseTests/Register/**/*.cs",
+            "src/UnitTests/UseCaseTests/Transfer/**/*.cs",
+            "src/UnitTests/UseCaseTests/Withdraw/**/*.cs",
+            "src/UnitTests/InputValidationTests/CloseAccountInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/DepositInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/RegisterInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/TransferInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/WithdrawInputValidationTests.cs"
+          ]
+        },
+        {
+          "condition": "(Basic)",
+          "exclude": [
+            "src/WebApi/UseCases/V1/CloseAccount/**/*.cs",
+            "src/WebApi/UseCases/V1/Deposit/**/*.cs",
+            "src/WebApi/UseCases/V1/GetAccountDetails/**/*.cs",
+            "src/WebApi/UseCases/V1/Transfer/**/*.cs",
+            "src/WebApi/UseCases/V1/Withdraw/**/*.cs",
+            "src/WebApi/UseCases/V2/GetAccountDetails/**/*.cs",
+            "src/Application/Boundaries/CloseAccount/**/*.cs",
+            "src/Application/Boundaries/Deposit/**/*.cs",
+            "src/Application/Boundaries/GetAccountDetails/**/*.cs",
+            "src/Application/Boundaries/Transfer/**/*.cs",
+            "src/Application/Boundaries/Withdraw/**/*.cs",
+            "src/Application/UseCases/CloseAccount.cs",
+            "src/Application/UseCases/Deposit.cs",
+            "src/Application/UseCases/GetAccountDetails.cs",
+            "src/Application/UseCases/Transfer.cs",
+            "src/Application/UseCases/Withdraw.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/CloseAccountPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/DepositPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/GetAccountDetailsPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/TransferPresenter.cs",
+            "src/Infrastructure/PersistenceLayer.InMemory/Presenters/WithdrawPresenter.cs",
+            "src/UnitTests/UseCaseTests/CloseAccount/**/*.cs",
+            "src/UnitTests/UseCaseTests/Deposit/**/*.cs",
+            "src/UnitTests/UseCaseTests/GetAccountDetails/**/*.cs",
+            "src/UnitTests/UseCaseTests/Transfer/**/*.cs",
+            "src/UnitTests/UseCaseTests/Withdraw/**/*.cs",
+            "src/UnitTests/InputValidationTests/CloseAccountInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/DepositInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/GetAccountDetailsInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/TransferInputValidationTests.cs",
+            "src/UnitTests/InputValidationTests/WithdrawInputValidationTests.cs"
+          ]
+        },
+        {
+          "condition": "(NServiceBus)",
+          "exclude": [
+            "src/Infrastructure/ServiceBus/Azure/**/*.cs",
+            "src/Infrastructure/ServiceBus/Rebus/**/*.cs",
+            "src/WebApi/Extensions/AzureServicebusInfrastructureExtensions.cs",
+            "src/WebApi/Extensions/RebusServicebusInfrastructureExtensions.cs",
+            "src/BusWorker/HostServices/AzureBusService.cs",
+            "src/BusWorker/HostServices/RebusService.cs"
+          ]
+        },
+        {
+          "condition": "(Rebus)",
+          "exclude": [
+            "src/Infrastructure/ServiceBus/Azure/**/*.cs",
+            "src/Infrastructure/ServiceBus/Particular/**/*.cs",
+            "src/WebApi/Extensions/AzureServicebusInfrastructureExtensions.cs",
+            "src/WebApi/Extensions/ParticularServicebusInfrastructureExtensions.cs",
+            "src/BusWorker/HostServices/AzureBusService.cs",
+            "src/BusWorker/HostServices/ParticularService.cs"
+          ]
+        },
+        {
+          "condition": "(Azure)",
+          "exclude": [
+            "src/Infrastructure/ServiceBus/Particular/**/*.cs",
+            "src/Infrastructure/ServiceBus/Rebus/**/*.cs",
+            "src/WebApi/Extensions/ParticularServicebusInfrastructureExtensions.cs",
+            "src/WebApi/Extensions/RebusServicebusInfrastructureExtensions.cs",
+            "src/BusWorker/HostServices/ParticularService.cs",
+            "src/BusWorker/HostServices/RebusService.cs"
+          ]
+        },
+        {
+          "condition": "(Full)",
+          "exclude": []
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": "src/Application/Application.csproj"
+    },
+    {
+      "path": "src/Domain/Domain.csproj"
+    },
+    {
+      "path": "src/Infrastructure/Infrastructure.csproj"
+    },
+    {
+      "path": "src/WebApi/WebApi.csproj"
+    },
+    {
+      "path": "src/BusWorker/BusWorker.csproj"
+    },
+    {
+      "path": "src/Shared/Shared.csproj"
+    }
+  ]
+}
