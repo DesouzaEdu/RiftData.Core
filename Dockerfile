@@ -19,7 +19,6 @@ COPY ["Directory.Build.targets", "Directory.Build.targets"]
 COPY ["dotnet.ruleset", "dotnet.ruleset"]
 COPY ["global.json", "global.json"]
 COPY ["stylecop.json", "stylecop.json"]
-COPY ["LICENSE", "LICENSE"]
 
 WORKDIR "/src/src/WebApi"
 
