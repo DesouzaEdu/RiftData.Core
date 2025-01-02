@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <IsPublishable>false</IsPublishable>
+        <IsPublishable>true</IsPublishable>
         <IsPackable>false</IsPackable>
         <UserSecretsId>Genocs</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>

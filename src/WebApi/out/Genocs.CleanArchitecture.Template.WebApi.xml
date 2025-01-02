@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genocs.CleanArchitecture.Template.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Genocs.CleanArchitecture.Template.WebApi.ApiClient.IOrderApi">
+            <summary>
+            This is an example of a Refit ApiClient interface.
+            </summary>
+        </member>
+        <member name="M:Genocs.CleanArchitecture.Template.WebApi.ApiClient.IOrderApi.GetOrdersAsync(System.Int32,System.Int32)">
+            <summary>
+            Fool method to test the ApiClient.
+            </summary>
+            <param name="pageIndex">The page.</param>
+            <param name="pageSize">The number of element inside the page.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.WebApi.Filters.ConfigureSwaggerOptions">
+            <summary>
+            Configures the Swagger generation options.
+            </summary>
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+        </member>
+        <member name="M:Genocs.CleanArchitecture.Template.WebApi.Filters.ConfigureSwaggerOptions.#ctor(Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genocs.CleanArchitecture.Template.WebApi.Filters.ConfigureSwaggerOptions"/> class.
+            </summary>
+            <param name="provider">The <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider">_provider</see> used to generate Swagger documents.</param>
+        </member>
+        <member name="M:Genocs.CleanArchitecture.Template.WebApi.Filters.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.WebApi.Filters.SwaggerDefaultValues">
+            <summary>
+            Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.
+            </summary>
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.
+            Once they are fixed and published, this class can be removed.</remarks>
+        </member>
+        <member name="M:Genocs.CleanArchitecture.Template.WebApi.Filters.SwaggerDefaultValues.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Applies the filter to the specified operation using the given context.
+            </summary>
+            <param name="operation">The operation to apply the filter to.</param>
+            <param name="context">The current operation filter context.</param>
+        </member>
+        <member name="M:Genocs.CleanArchitecture.Template.WebApi.UseCases.V1.CloseAccount.AccountsController.GetAll">
+            <summary>
+            Close an Account
+            </summary>
+            <response code="200">The closed account id.</response>
+            <response code="400">Bad request.</response>
+            <response code="500">Error.</response>
+            <param name="request">The request to Close an Account.</param>
+            <returns>The account id.</returns>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.WebApi.UseCases.V1.CloseAccount.CloseAccountRequest">
+            <summary>
+            The Close Account Request.
+            </summary>
+        </member>
+        <member name="P:Genocs.CleanArchitecture.Template.WebApi.UseCases.V1.CloseAccount.CloseAccountRequest.AccountId">
+            <summary>
+            Account ID.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.WebApi.UseCases.V1.CloseAccount.CloseAccountResponse">
+            <summary>
+            Close Account Response
+            </summary>
+        </member>
+        <member name="P:Genocs.CleanArchitecture.Template.WebApi.UseCases.V1.CloseAccount.CloseAccountResponse.AccountId">
+            <summary>
+            Account ID
+            </summary>
+        </member>
+        <member name="T:Refit.Implementation.Generated">
+            <inheritdoc />
+        </member>
+        <member name="T:Refit.Implementation.Generated.GenocsCleanArchitectureTemplateWebApiApiClientIOrderApi">
+            <inheritdoc />
+        </member>
+        <member name="P:Refit.Implementation.Generated.GenocsCleanArchitectureTemplateWebApiApiClientIOrderApi.Client">
+            <inheritdoc />
+        </member>
+        <member name="M:Refit.Implementation.Generated.GenocsCleanArchitectureTemplateWebApiApiClientIOrderApi.#ctor(System.Net.Http.HttpClient,Refit.IRequestBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Refit.Implementation.Generated.GenocsCleanArchitectureTemplateWebApiApiClientIOrderApi.GetOrdersAsync(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Refit.Implementation.Generated.GenocsCleanArchitectureTemplateWebApiApiClientIOrderApi.Genocs#CleanArchitecture#Template#WebApi#ApiClient#IOrderApi#GetOrdersAsync(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

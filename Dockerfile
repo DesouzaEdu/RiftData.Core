@@ -12,9 +12,9 @@ COPY . ./
 WORKDIR "/src/src/WebApi"
 
 RUN dotnet restore
-RUN dotnet publish -c Release -o out
+RUN dotnet publish "WebApi.csproj" -c Release -o out
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build-env /app/src/WebApi/out .
 ENTRYPOINT ["dotnet", "Genocs.CleanArchitecture.Template.WebApi.dll"]

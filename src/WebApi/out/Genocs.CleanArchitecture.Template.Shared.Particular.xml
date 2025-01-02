@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genocs.CleanArchitecture.Template.Shared.Particular</name>
+    </assembly>
+    <members>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Particular.TransactionSaga.RedemptionCompleted">
+            <summary>
+            This event happened when the system receive an Unload.
+            </summary>
+        </member>
+        <member name="P:Genocs.CleanArchitecture.Template.Shared.Particular.TransactionSaga.RedemptionCompleted.RequestId">
+            <summary>
+            The requestId.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Particular.TransactionSaga.RedemptionRejected">
+            <summary>
+            This event happen when the system receive an Unload.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Particular.TransactionSaga.RedemptionStarted">
+            <summary>
+            This event happen when the system start processing the redemption.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Particular.TransactionSaga.TransactionLoaded">
+            <summary>
+            This event happen whenever the system receive a Load.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Particular.TransactionSaga.TransactionSagaData">
+            <summary>
+            This is the SagaData Object.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Particular.TransactionSaga.TransactionUnloaded">
+            <summary>
+            This event happen whenever the system receive an Unload.
+            </summary>
+        </member>
+    </members>
+</doc>

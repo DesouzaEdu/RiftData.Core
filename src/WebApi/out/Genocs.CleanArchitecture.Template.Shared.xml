@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genocs.CleanArchitecture.Template.Shared</name>
+    </assembly>
+    <members>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Interfaces.ICommand">
+            <summary>
+            Command definition.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Interfaces.IEvent">
+            <summary>
+            Event definition.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Interfaces.IIntegrationEvent">
+            <summary>
+            IntegrationEvent definition.
+            </summary>
+        </member>
+        <member name="T:Genocs.CleanArchitecture.Template.Shared.Interfaces.IMessage">
+            <summary>
+            Generic message.
+            </summary>
+        </member>
+    </members>
+</doc>
