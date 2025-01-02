@@ -7,27 +7,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /src
-COPY ["NuGet.config", "."]
-COPY ["src/WebApi", "src/WebApi/"]
-COPY ["src/Infrastructure", "src/Infrastructure/"]
-COPY ["src/Application", "src/Application/"]
-COPY ["src/Domain", "src/Domain/"]
-COPY ["src/Shared", "src/Shared/"]
+COPY . ./
 
-COPY ["Directory.Build.props", "Directory.Build.props"]
-COPY ["Directory.Build.targets", "Directory.Build.targets"]
-COPY ["dotnet.ruleset", "dotnet.ruleset"]
-COPY ["global.json", "global.json"]
-COPY ["stylecop.json", "stylecop.json"]
+WORKDIR "/src/src/WebApi"
 
-WORKDIR "/src/WebApi"
-
-RUN dotnet restore "WebApi.csproj"
-
-RUN dotnet build "WebApi.csproj" -c Release -o /app/build
-
-FROM build-env AS publish
-RUN dotnet publish "WebApi.csproj" -c Release -o /app/publish
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
 
 FROM base AS final
 WORKDIR /app
