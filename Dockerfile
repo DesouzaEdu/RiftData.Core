@@ -20,7 +20,6 @@ COPY ["dotnet.ruleset", "dotnet.ruleset"]
 COPY ["global.json", "global.json"]
 COPY ["stylecop.json", "stylecop.json"]
 COPY ["LICENSE", "LICENSE"]
-COPY ["icon.png", "icon.png"]
 
 WORKDIR "/src/src/WebApi"
 
