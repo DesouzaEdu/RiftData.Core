@@ -20,7 +20,7 @@ COPY ["dotnet.ruleset", "dotnet.ruleset"]
 COPY ["global.json", "global.json"]
 COPY ["stylecop.json", "stylecop.json"]
 
-WORKDIR "/src/src/WebApi"
+WORKDIR "/src/WebApi"
 
 RUN dotnet restore "WebApi.csproj"
 
