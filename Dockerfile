@@ -16,5 +16,5 @@ RUN dotnet publish -c Release -o out
 
 FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/src/WebApi/out .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Genocs.CleanArchitecture.Template.WebApi.dll"]
