@@ -6,7 +6,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
-WORKDIR /src
+WORKDIR /app
 COPY . ./
 
 WORKDIR "/src/src/WebApi"
@@ -16,5 +16,5 @@ RUN dotnet publish -c Release -o out
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build-env /app/src/WebApi/out .
 ENTRYPOINT ["dotnet", "Genocs.CleanArchitecture.Template.WebApi.dll"]
